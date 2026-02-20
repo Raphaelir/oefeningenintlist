@@ -8,6 +8,10 @@ import java.util.stream.IntStream;
 public class IntList {
 	private int[] lijst;
 	
+	/**
+	 * @post | getLength() == 0
+	 * 
+	 */
 	public IntList() {
 		this.lijst = new int[0];
 	}
@@ -18,9 +22,8 @@ public class IntList {
 		return lijst.length;
 	}
 	/**
-	 * @pre | index != null
 	 * @pre | 0 <= index && index < getLength()
-	 * @post | result != null
+	 * @post | result == getArray()[index]
 	 */
 	public int getElementIndex(int index) {
 		return lijst[index];

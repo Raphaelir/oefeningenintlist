@@ -1,6 +1,5 @@
 package intlist;
 
-import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -10,14 +9,30 @@ import org.junit.jupiter.api.Test;
 class IntListTest {
 
 	@Test
-	void test() {
-		int[] argument = {1,2,3,4};
-		IntList myarray = new IntList();
-		assertEquals(4,myarray.getLength());
-		assertEquals(2,myarray.getElementIndex(1));
-		int[] gewijzigde_argument = {1,2,3,4,5};
-		assertArrayEquals(gewijzigde_argument,myarray.addLast(5));
-		int[] gewijzigde_argument_2 = {1,2,3};
-		assertArrayEquals(gewijzigde_argument_2,myarray.removeLast());
+	void test_basis() {
+		IntList object = new IntList();
+		object.addLast(1);
+		assertEquals(1,object.getLength());
+		object.addLast(2);
+		assertEquals(2,object.getLength());
+		object.removeLast();
+		assertEquals(1,object.getLength());
+		int[] array = {1};
+		assertArrayEquals(array,object.getArray());
+		object.addLast(2);
+		object.addLast(3);
+		assertEquals(3,object.getElementIndex(object.getLength()-1));
+		
+	}
+	@Test
+	void test_representation_exposure() {
+		IntList myintlist = new IntList();
+		myintlist.addLast(10);
+		myintlist.addLast(20);
+		int[] external = myintlist.getArray();
+		external[0] = 999; // sabotage
+		int[] array = {10,20};
+		assertArrayEquals(array,myintlist.getArray());
+		
 	}
 }
