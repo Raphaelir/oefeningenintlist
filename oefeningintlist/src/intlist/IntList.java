@@ -1,5 +1,7 @@
 package intlist;
 
+import java.util.stream.IntStream;
+
 /**
  * Elke instantie van deze klasse slaat een reeks getallen op
  */
@@ -49,7 +51,7 @@ public class IntList {
 	 * @pre | getLength()>0
 	 * @mutates | this
 	 * @post | getLength() == old(getLength())-1
-	 * @post | IntStream.range(0,old(getArray()).clone().length-1).allMatch(i->getArray()[i]==old(getArray().clone()[i]))
+	 * @post | IntStream.range(0,old(getArray()).clone().length-1).allMatch(i->getArray()[i]==old(getArray().clone())[i])
 	 * 
 	 */
 	public void removeLast() {

@@ -20,15 +20,4 @@ class IntListTest {
 		int[] gewijzigde_argument_2 = {1,2,3};
 		assertArrayEquals(gewijzigde_argument_2,myarray.removeLast());
 	}
-
-	private void assertArrayEquals(int[] gewijzigde_argument, Object last) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	private void assertEquals(int i, int length) {
-		// TODO Auto-generated method stub
-		
-	}
-
 }
