@@ -6,34 +6,62 @@ import java.util.stream.IntStream;
  * Elke instantie van deze klasse slaat een reeks getallen op
  */
 public class IntList {
-	private int[] lijst;
+	Integer value;
+	IntList next;
 	
+	private IntList getNext() {
+		return this.next;
+	}
 	/**
 	 * @post | getLength() == 0
 	 * 
 	 */
 	public IntList() {
-		this.lijst = new int[0];
+		this.value = null;
+		this.next = null;
 	}
 	/**
 	 * @post | result == getArray().length
 	 */
+	
 	public int getLength() {
-		return lijst.length;
+		IntList beschouw = this;
+		int teller = 0;
+		while(beschouw.value != null) {
+			teller++;
+			beschouw = beschouw.getNext();
+		}
+		return teller;
 	}
+	
 	/**
 	 * @pre | 0 <= index && index < getLength()
 	 * @post | result == getArray()[index]
 	 */
 	public int getElementIndex(int index) {
-		return lijst[index];
+		IntList beschouw = this;
+		int teller = 0;
+		while(teller < index) {
+			teller++;
+			beschouw = beschouw.getNext();
+		}
+		return beschouw.value;
 	}
 	/**
 	 * @creates | result
 	 * @post | result != null
 	 */
 	public int[] getArray() {
-		return lijst.clone();
+		int lengte = this.getLength();
+		int index = 0;
+		IntList beschouw = this;
+		int[] lijst = new int[lengte];
+		while(beschouw.value!=null) {
+			lijst[index] = beschouw.value;
+			beschouw = beschouw.getNext();
+			index++;
+		}
+		return lijst;
 	}
 	/**
 	 * @pre element != null
@@ -41,14 +69,14 @@ public class IntList {
 	 * @post | IntStream.range(0,old(getArray()).clone().length).allMatch(i->getArray()[i]==old(getArray()).clone()[i]) && getArray()[getArray().length-1] == element
 	 */
 	public void addLast(int element) {
-		int lengte = getArray().length;
-		int[] merged = new int[getArray().length+1];
-		for(int i = 0;i < lengte;i++) {
-			merged[i] = getArray()[i];
+		IntList beschouw = this;
+		while(beschouw.value != null) {
+			beschouw = beschouw.getNext();
 		}
-		merged[getArray().length] = element;
-		this.lijst = merged;
-				
+		beschouw.value = element;
+		IntList volgende = new IntList();
+		beschouw.next = volgende;
+		
 	}
 	/**
 	 * @pre | getLength()>0
@@ -58,12 +86,11 @@ public class IntList {
 	 * 
 	 */
 	public void removeLast() {
-		int lengte = getArray().length -1;
-		int[] verkort = new int[lengte];
-		for(int i=0;i<lengte;i++) {
-			verkort[i] = getArray()[i];
-		}
-		this.lijst = verkort;
-		
+		IntList beschouw = this;
+		while(beschouw.getNext().value != null) {
+			beschouw = beschouw.next;
+	}
+		beschouw.value = null;
+		beschouw.next = null;
 	}
 }
