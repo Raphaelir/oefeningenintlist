@@ -1,6 +1,9 @@
 package intlist;
 
 import java.util.stream.IntStream;
+// Het probleem in deze code is dat de preconditie van getLength getArray() gebruikt maar dat getArray() getLength() nodig heeft.
+// dus de postconditie van getLength werd vervangt: "@post | result == getArray().length" --> "@post | result >= 0" maar deze laatste is
+// toch niet sterk genoeg ?
 
 /**
  * Elke instantie van deze klasse slaat een reeks getallen op
@@ -21,13 +24,13 @@ public class IntList {
 		this.next = null;
 	}
 	/**
-	 * @post | result == getArray().length
+	 * @post | result >= 0
 	 */
 	
 	public int getLength() {
 		IntList beschouw = this;
 		int teller = 0;
-		while(beschouw.value != null) {
+		while(beschouw != null && beschouw.value != null) {
 			teller++;
 			beschouw = beschouw.getNext();
 		}
