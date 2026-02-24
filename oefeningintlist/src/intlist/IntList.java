@@ -6,6 +6,11 @@ import java.util.stream.IntStream;
  * Elke instantie van deze klasse slaat een reeks getallen op
  */
 public class IntList {
+	/**
+	 * @invar |lijst != null
+	 * @representationObject
+	 * 
+	 */
 	private int[] lijst;
 	
 	/**
@@ -41,6 +46,7 @@ public class IntList {
 	 * Er bestaat iets veel makkelijker dan met IntStream, zie oplossing met Arrays.equals()
 	 */
 	public void addLast(int element) {
+		// je kan dat ook implementeren door gebruik te maken van System.arraycopy()
 		int lengte = getArray().length;
 		int[] merged = new int[getArray().length+1];
 		for(int i = 0;i < lengte;i++) {
