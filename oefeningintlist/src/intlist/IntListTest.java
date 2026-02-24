@@ -11,6 +11,8 @@ class IntListTest {
 	@Test
 	void test_basis() {
 		IntList object = new IntList();
+		assertArrayEquals(new int[] {},object.getArray());
+		assertEquals(0,object.getLength());
 		object.addLast(1);
 		assertEquals(1,object.getLength());
 		object.addLast(2);

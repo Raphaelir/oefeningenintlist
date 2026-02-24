@@ -36,9 +36,9 @@ public class IntList {
 		return lijst.clone();
 	}
 	/**
-	 * @pre element != null
 	 * @mutates | this
 	 * @post | IntStream.range(0,old(getArray()).clone().length).allMatch(i->getArray()[i]==old(getArray()).clone()[i]) && getArray()[getArray().length-1] == element
+	 * Er bestaat iets veel makkelijker dan met IntStream, zie oplossing met Arrays.equals()
 	 */
 	public void addLast(int element) {
 		int lengte = getArray().length;
@@ -55,6 +55,7 @@ public class IntList {
 	 * @mutates | this
 	 * @post | getLength() == old(getLength())-1
 	 * @post | IntStream.range(0,old(getArray()).clone().length-1).allMatch(i->getArray()[i]==old(getArray().clone())[i])
+	 * Er bestaat een makkelijkere manier met Arrays.equals()
 	 * 
 	 */
 	public void removeLast() {
