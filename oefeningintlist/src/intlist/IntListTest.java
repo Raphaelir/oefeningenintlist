@@ -35,6 +35,7 @@ class IntListTest {
 		external[0] = 999; // sabotage
 		int[] array = {10,20};
 		assertArrayEquals(array,myintlist.getArray());
+		//doe dat ook voor andere getters.
 		
 	}
 }
