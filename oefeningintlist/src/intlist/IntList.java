@@ -2,9 +2,10 @@ package intlist;
 
 import java.util.stream.IntStream;
 // Het probleem in deze code is dat de preconditie van getLength getArray() gebruikt maar dat getArray() getLength() nodig heeft.
-// dus de postconditie van getLength werd vervangt: "@post | result == getArray().length" --> "@post | result >= 0" maar deze laatste is
+// dus de postconditie van getLength() werd vervangt: "@post | result == getArray().length" --> "@post | result >= 0" maar deze laatste is
 // toch niet sterk genoeg ?
-
+// oplossing daarvor is: mmak een private versie van getLength() die dus geen documentatie nodig heeft en deze mag jij gebruiken bij getArray()
+// dit gaat toelaten om die overflow te vermijden
 /**
  * Elke instantie van deze klasse slaat een reeks getallen op
  */
